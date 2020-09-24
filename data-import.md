@@ -63,3 +63,7 @@ litters_df
     ## 10 Con8  #3/5/2/2/95         28.5        NA            20               8
     ## # … with 39 more rows, and 2 more variables: pups_dead_birth <dbl>,
     ## #   pups_survive <dbl>
+
+## Options to read\_csv
+
+check out “read\_csv()” for more information.
