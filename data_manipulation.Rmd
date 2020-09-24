@@ -71,3 +71,11 @@ mutate(litters_df,
        wt_gain = gd18_weight-gd0_weight,
        group = str_to_lower(group))
 ```
+
+## 'arrange'
+```{r}
+# arrange the data in order of increasing pups_born_alive value.  
+arrange(litters_df, pups_born_alive)
+
+```
+
