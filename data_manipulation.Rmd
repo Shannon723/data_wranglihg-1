@@ -63,3 +63,11 @@ group is equal either to con7 or Mod8
 ```{r}
 filter(litters_df, group %in% c("Con7","Mod8"))
 ```
+
+## 'mutate'
+```{r}
+# 1) create new variable 'wt_gain', then 2) modify the group variable to lower case
+mutate(litters_df, 
+       wt_gain = gd18_weight-gd0_weight,
+       group = str_to_lower(group))
+```
