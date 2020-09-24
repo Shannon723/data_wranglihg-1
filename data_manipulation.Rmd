@@ -11,3 +11,55 @@ library(tidyverse)
 litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor :: clean_names(litters_df)
 ```
+
+## 'select'
+```{r}
+select(litters_df, group, gd0_weight)
+```
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming columns...
+
+```{r}
+select(litters_df, GROUP=group, LITTER_NUMBER = litter_number)
+```
+```{r}
+rename(litters_df, GROUP=group, LITTER_NUMBER = litter_number)
+```
+
+Select helpers
+```{r}
+select(litters_df, starts_with("gd"))
+```
+relocate the litter_number to the first
+```{r} 
+select(litters_df, litter_number, everything()) 
+```
+
+```{r}
+## relocate(litters_df,litter_number) - got an error in relocate function
+```
+
+## 'filter'
+
+```{r}
+filter(litters_df, gd0_weight <22)
+```
+
+```{r}
+filter(litters_df, !(gd0_weight ==22)) # filter gd0 weight is not 22
+#another way
+filter(litters_df, gd0_weight !=22)
+```
+
+group is equal either to con7 or Mod8
+```{r}
+filter(litters_df, group %in% c("Con7","Mod8"))
+```
