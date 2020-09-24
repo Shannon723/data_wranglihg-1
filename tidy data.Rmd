@@ -22,9 +22,11 @@ pulse_data_tidy =
   pivot_longer(
     bdi_score_bl:bdi_score_12m,
     names_to = "visit",
-    values_to = "bid"
+    names_prefix = "bdi_score_",
+    values_to = "bdi"
   )
 ```
+
 rewrite, combine, and extend (to add a mutate)
 ```{r}
 pulse_data = 
@@ -33,7 +35,28 @@ pulse_data =
   pivot_longer(
     bdi_score_bl:bdi_score_12m,
     names_to = "visit",
-    values_to = "bid"
+    names_prefix = "bdi_score_",
+    values_to = "bdi"
   ) %>%
-  relocate(id,visit)
+  relocate(id,visit) %>% #put id, visit to fist
+  mutate(visit = recode(visit, "bl" = "00m"))
+```
+
+## 'pivot_wider'
+
+Make up some data!
+```{r}
+analysis_result = 
+  tibble(
+    group = c("treatment", "treatment", "placebo", "placebo"),
+    time = c("pre", "post", "pre", "post"),
+    mean = c(4,8,3.5,4)
+  )
+
+analysis_result %>%
+  pivot_wider (
+    names_from = "time",
+    values_from = "mean"
+  )
+
 ```
